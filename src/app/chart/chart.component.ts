@@ -20,25 +20,21 @@ export class TestChartComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-
-        this.basicChart();
+        this.lineChart();
         this.threeDchart();
-
     }
 
     getData() {
 
         let arr = [];
-
         for (let i = 0; i < 10; i++) {
             arr.push(Array(10).fill(2).map(() => Math.random()));
-
         }
         console.log(arr);
         return arr;
-
     }
-    threeDchart(){
+
+    lineChart(){
         const element = this.el.nativeElement
         const data = [{
             x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -52,21 +48,8 @@ export class TestChartComponent implements OnInit {
         Plotly.plot(element, data, style)
     }
 
-    basicChart() {
-        const element = this.el1.nativeElement
-        // const data = [{
-        //     x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        //     y: [1, 2, 4, 8, 16, 32, 50 , 60 ,70, 150]
-        // }]
-
-        // const data= [{
-
-        //     a: [1, 2, 3, 4, 5, 6],
-        //     b: [10.10, 100.5, 300, 199.25, 160, 90],
-        //     c: [200, 25.25, 365, 50.2, 270.25, 110.5],
-        //     d: [27.30,300.25,200,330.30,160,90],
-
-        // }]
+    threeDchart() {
+        const element = this.el1.nativeElement       
         const formatedData = [{
             z: this.getData(),
             type: 'surface'
@@ -82,9 +65,7 @@ export class TestChartComponent implements OnInit {
                 b: 65,
                 t: 90
             }
-        }
-
-      
+        }     
 
         Plotly.plot(element, formatedData, layout)
     }
